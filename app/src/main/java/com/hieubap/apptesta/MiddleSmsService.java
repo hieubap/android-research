@@ -35,7 +35,7 @@ public class MiddleSmsService extends Service {
         Intent intent = new Intent(instance, MiddleSmsService.class);
         intent.setAction(ACTION_STOP);
 
-        return PendingIntent.getService(instance, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        return PendingIntent.getService(instance, 0, intent, PendingIntent.FLAG_IMMUTABLE);
     }
 
     private Notification getNotification() {
@@ -125,13 +125,19 @@ public class MiddleSmsService extends Service {
         System.out.println("Create Service");
         smsReceiver = new SmsBroadCaster();
 //        registerReceiver(smsReceiver, new IntentFilter(Intent.ACTION_SHOW_APP_INFO));
+
         registerReceiver(smsReceiver, new IntentFilter(Intent.ACTION_SCREEN_ON));
+//        registerReceiver(smsReceiver, new IntentFilter(Intent.));
+//        registerReceiver(smsReceiver, new IntentFilter(Intent.EXTRA_ASSIST_INPUT_HINT_KEYBOARD));
+//        registerReceiver(smsReceiver, new IntentFilter(Intent.EXTRA_KEY_EVENT));
+//        registerReceiver(smsReceiver, new IntentFilter(Telephony.Sms.Intents.KE));
 //        registerReceiver(smsReceiver, new IntentFilter(Intent.ACTION_POWER_CONNECTED));
 //        registerReceiver(smsReceiver, new IntentFilter(Intent.ACTION_PASTE));
 //        registerReceiver(smsReceiver, new IntentFilter(Intent.ACTION_PROVIDER_CHANGED));
 //        registerReceiver(smsReceiver, new IntentFilter(Intent.EXTRA_EMAIL));
 //        registerReceiver(smsReceiver, new IntentFilter(Intent.CATEGORY_APP_EMAIL));
 //        registerReceiver(smsReceiver, new IntentFilter(Intent.CATEGORY_APP_MESSAGING));
+//        registerReceiver(smsReceiver, new IntentFilter(Telephony.Sms.Intents.M));
         registerReceiver(smsReceiver, new IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION));
 //        registerReceiver(smsReceiver, new IntentFilter(Telephony.Sms.Intents.DATA_SMS_RECEIVED_ACTION));
 //        registerReceiver(smsReceiver, new IntentFilter(Telephony.Sms.Intents.SMS_DELIVER_ACTION));

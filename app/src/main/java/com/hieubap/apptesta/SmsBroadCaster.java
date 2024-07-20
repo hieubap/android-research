@@ -49,6 +49,8 @@ public String digestSha256(String s) {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        System.out.println("RECEIVED_SOMETHING = "+intent.getAction().toString());
+        Toast.makeText(context, "TRIGGER_RECEIVER", Toast.LENGTH_SHORT).show();
         if(intent != null && intent.getAction().equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)){
             SmsMessage[] smsMessages = Telephony.Sms.Intents.getMessagesFromIntent(intent);
             System.out.println("received_sms");
